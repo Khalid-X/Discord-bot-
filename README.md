@@ -6,7 +6,9 @@ Discord is a popular communication platform designed for creating communities. I
 
 Discord bots are automated programs that interact with servers on Discord. They can perform a wide range of tasks, including moderating channels, sending notifications, providing entertainment, and tracking server activity. Bots enhance the user experience by automating repetitive tasks and providing valuable insights into server dynamics.
 
-The discord bot in this repository is a Discord Stats Bot that is a specialized bot designed to monitor and analyze user activity within a Discord server. It collects comprehensive statistics on server engagement, allowing server administrators and community managers to better understand participation and interaction patterns.
+The discord bot in this repository is a Discord Stats Bot that is a specialized bot designed to monitor and analyze user activity within a Discord server. It collects comprehensive statistics on server engagement, allowing server administrators and community managers to better understand participation and interaction patterns. 
+
+It was fully made using python and multiple massive libraries such as: Pillow, matplotlib, numpy, discord API, etc. It took about 3 months to fully finalize this project.
 
 
 ## Features
