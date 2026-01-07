@@ -4,7 +4,9 @@
 
 **Discord** is a popular communication platform designed for creating communities. It allows users to communicate via text, voice, and video channels, as well as share multimedia content. Discord is widely used by organizations, hobby groups, and educational communities to foster collaboration and engagement.
 
-**Discord bots** are automated programs that interact with servers on Discord. Servers are similar to WhatsApp groups or telegram groups. They can perform a wide range of tasks, including moderating channels, sending notifications, providing entertainment, and tracking server activity. Bots enhance the user experience by automating repetitive tasks and providing valuable insights into server dynamics.
+Discord servers are virtual communities where users can communicate and collaborate. Each server contains multiple channels for text, voice, or video communication, along with roles and permissions to manage members. Servers are similar to WhatsApp groups in that they provide a shared space for people with common interests to interact, but they offer more organizational tools and customizable channels.
+
+**Discord bots** are automated programs that interact with servers on Discord. They can perform a wide range of tasks, including moderating channels, sending notifications, providing entertainment, and tracking server activity. Bots enhance the user experience by automating repetitive tasks and providing valuable insights into server dynamics.
 
 The discord bot in this repository is a **Discord Stats Bot** that is a specialized bot designed to monitor and analyze user activity within a Discord server. It collects comprehensive statistics on server engagement, allowing server administrators and community managers to better understand participation and interaction patterns. 
 
