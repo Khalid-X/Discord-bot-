@@ -2,18 +2,18 @@
 
 ## Overview
 
-Discord is a popular communication platform designed for creating communities. It allows users to communicate via text, voice, and video channels, as well as share multimedia content. Discord is widely used by organizations, hobby groups, and educational communities to foster collaboration and engagement.
+**Discord** is a popular communication platform designed for creating communities. It allows users to communicate via text, voice, and video channels, as well as share multimedia content. Discord is widely used by organizations, hobby groups, and educational communities to foster collaboration and engagement.
 
-Discord bots are automated programs that interact with servers on Discord. They can perform a wide range of tasks, including moderating channels, sending notifications, providing entertainment, and tracking server activity. Bots enhance the user experience by automating repetitive tasks and providing valuable insights into server dynamics.
+**Discord bots** are automated programs that interact with servers on Discord. They can perform a wide range of tasks, including moderating channels, sending notifications, providing entertainment, and tracking server activity. Bots enhance the user experience by automating repetitive tasks and providing valuable insights into server dynamics.
 
-The discord bot in this repository is a Discord Stats Bot that is a specialized bot designed to monitor and analyze user activity within a Discord server. It collects comprehensive statistics on server engagement, allowing server administrators and community managers to better understand participation and interaction patterns. 
+The discord bot in this repository is a **Discord Stats Bot** that is a specialized bot designed to monitor and analyze user activity within a Discord server. It collects comprehensive statistics on server engagement, allowing server administrators and community managers to better understand participation and interaction patterns. 
 
-It was fully made using python and multiple massive libraries such as: Pillow, matplotlib, numpy, discord API, etc. It took about 3 months to fully finalize this project.
+It was fully made using **python** and multiple massive libraries such as: Pillow, matplotlib, numpy, discord API, etc. It took about **3 months** to fully finalize this project.
 
 
 ## Features
 
-This Discord Stats Bot tracks the following metrics:
+This **Discord Stats Bot** tracks the following metrics:
 
 - **Messages**: Counts and analyzes messages sent by users across different channels.
 - **Voice Call Activity**: Monitors time spent by users in voice channels, providing insights into engagement levels.
