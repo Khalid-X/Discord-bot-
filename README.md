@@ -13,7 +13,7 @@
 
 The discord bot in this repository is a **Discord Statistics Bot** that is a specialized bot designed to monitor and analyze user activity within a Discord server. It collects comprehensive statistics on server engagement, allowing server administrators and community managers to better understand participation and interaction patterns. 
 
-It was fully made using **python** and multiple massive libraries such as: Pillow, matplotlib, numpy, discord.py, etc. It was also made with the help of popular services like PostgreSQL and redis. It took about **3 months** to fully finalize this project.
+It was fully made using **python** and multiple massive libraries such as: **Pillow, matplotlib, numpy, discord.py, etc.** It was also made with the help of popular services like **PostgreSQL** and **redis**. It took about **3 months** to fully finalize this project.
 
 
 ## Features
