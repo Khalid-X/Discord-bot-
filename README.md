@@ -21,6 +21,8 @@ This **Discord Stats Bot** tracks the following metrics:
 - **Application Activity**: Observes interactions with Discord applications and commands.
 - **Invites**: Keeps a record of server invites, including who invited whom, to assess community growth.
 
+All Statistics are permanently recorded using a PostgreSQL database. Multiple tables in the database are aggregated and were converted into hypertables that work with the timescaledb extension. 
+
 ---
 
 ## Benefits
