@@ -6,12 +6,12 @@ Discord is a popular communication platform designed for creating communities. I
 
 Discord bots are automated programs that interact with servers on Discord. They can perform a wide range of tasks, including moderating channels, sending notifications, providing entertainment, and tracking server activity. Bots enhance the user experience by automating repetitive tasks and providing valuable insights into server dynamics.
 
-The Discord Stats Bot is a specialized bot designed to monitor and analyze user activity within a Discord server. It collects comprehensive statistics on server engagement, allowing server administrators and community managers to better understand participation and interaction patterns.
+The discord bot in this repository is a Discord Stats Bot that is a specialized bot designed to monitor and analyze user activity within a Discord server. It collects comprehensive statistics on server engagement, allowing server administrators and community managers to better understand participation and interaction patterns.
 
 
 ## Features
 
-The Discord Stats Bot tracks the following metrics:
+This Discord Stats Bot tracks the following metrics:
 
 - **Messages**: Counts and analyzes messages sent by users across different channels.
 - **Voice Call Activity**: Monitors time spent by users in voice channels, providing insights into engagement levels.
@@ -28,7 +28,6 @@ The Discord Stats Bot tracks the following metrics:
 - Assists in **optimizing server organization and content** based on user behavior.
 - Offers a **comprehensive overview** of server dynamics in a single tool.
 
----
 
 
 
