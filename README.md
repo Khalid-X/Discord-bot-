@@ -27,10 +27,10 @@ The project required solving real-world engineering challenges such as:
 
 - API rate limits
 - Efficient caching
-- Real-time event processing
+- Real time event processing
 - Database optimization
 - Scalable analytics storage
-- Large-scale data aggregation
+- Large scale data aggregation
 
 
 
@@ -62,7 +62,7 @@ Beyond analytics, the project also served as a practical software engineering ex
 - Backend infrastructure design
 - Data engineering
 - System optimization
-- Real-time application development
+- Real time application development
 - Scalable architecture planning
 - Product and feature design
 
