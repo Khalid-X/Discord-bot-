@@ -33,3 +33,13 @@ The infrastructure also handles role membership syncing, channel/category syncin
 ## Modularization
 
 The bot is organized into professional command groups called **cogs**. Each cog manages its own commands and logic, helping keep the project modular, easier to maintain, and simpler to debug.
+
+
+
+---
+
+
+## Where can I use this bot?
+
+You simply have to make a discord server on the discord application then use this invite link: https://discord.com/oauth2/authorize?client_id=1481328229909270568&permissions=414734863601&integration_type=0&scope=bot+applications.commands 
+
