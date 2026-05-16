@@ -21,7 +21,7 @@ The project was developed entirely in Python using libraries such as discord.py,
 
 ## Infrastructure 
 
-The bot was designed with a strong focus on backend engineering and scalable system architecture. It was built to be capable of tracking hundreds of thousands of users with the potential of tracking millions. 
+The bot was designed with a strong focus on backend engineering and scalable system architecture. It was built to be capable of tracking hundreds of thousands of users with the potential of tracking millions. It uses a postgresql database with multiple different extensions. 
 
 The project required solving real-world engineering challenges such as:
 
