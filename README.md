@@ -34,6 +34,7 @@ The project required solving real-world engineering challenges such as:
 
 
 
+
 Data received from the Discord API is first stored in a **Redis batch system** before being written to the database every 30 seconds. The database currently contains **28 tables** used for tracking and caching.
 
 Most tables in the database are **hourly aggregated** and use **indexes** to improve query performance and efficiency. Timestamp reliant tables are also converted to **hypertables** with the use of the **timescaledb extension** to take advantage of separating data into time chunks that allow for even faster querying. 
@@ -48,6 +49,8 @@ The infrastructure also handles role membership syncing, channel/category syncin
 The project follows a modular architecture using professional command groups called cogs. Each cog independently manages its own commands, logic, and systems, making the codebase easier to maintain, debug, and expand.
 
 The modular structure allows new tracking systems and analytics features to be added efficiently without affecting unrelated parts of the application.
+
+Each cog focuses on using the functions from the database file in order to get data directly from the database then using the pillow library it draws the data on a template designed by me with fonts, strokes, restricting rectangles, and specific coordinates.
 
 
 ---
