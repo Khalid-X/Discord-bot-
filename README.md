@@ -12,7 +12,7 @@
 
 This repository contains a **Statistics Bot** designed to monitor and analyze activity inside Discord servers. It tracks statistics such as messages, voice activity, invites, mentions, emojis, and more, then converts the collected data into readable **charts**, **leaderboards**, **averages**, and **heatmaps**.
 
-The bot is built to scale efficiently and currently tracks over **5,000 users** with ease.
+The system currently supports analytics for over 5,000 users while maintaining efficient database and memory usage.
 
 The project was developed entirely in Python using libraries such as discord.py, Pillow, matplotlib, numpy, and more.
 
@@ -20,6 +20,19 @@ The project was developed entirely in Python using libraries such as discord.py,
 
 
 ## Infrastructure 
+
+The bot was designed with a strong focus on backend engineering and scalable system architecture. It was built to be capable of tracking hundreds of thousands of users with the potential of tracking millions. 
+
+The project required solving real-world engineering challenges such as:
+
+- API rate limits
+- Efficient caching
+- Real-time event processing
+- Database optimization
+- Scalable analytics storage
+- Large-scale data aggregation
+
+
 
 Data received from the Discord API is first stored in a **Redis batch system** before being written to the database every 30 seconds. The database currently contains **28 tables** used for tracking and caching.
 
@@ -30,13 +43,30 @@ The infrastructure also handles role membership syncing, channel/category syncin
 
 ---
 
-## Modularization
+## Software Architecture 
 
-The bot is organized into professional command groups called **cogs**. Each cog manages its own commands and logic, helping keep the project modular, easier to maintain, and simpler to debug.
+The project follows a modular architecture using professional command groups called cogs. Each cog independently manages its own commands, logic, and systems, making the codebase easier to maintain, debug, and expand.
 
+The modular structure allows new tracking systems and analytics features to be added efficiently without affecting unrelated parts of the application.
 
 
 ---
+
+
+## Project Goals and Impact
+
+The primary goal of the project is to help online communities better understand engagement patterns and server growth through data-driven insights.
+
+Beyond analytics, the project also served as a practical software engineering experience involving:
+
+- Backend infrastructure design
+- Data engineering
+- System optimization
+- Real-time application development
+- Scalable architecture planning
+- Product and feature design
+
+The project demonstrates the ability to independently design, build, optimize, and maintain a production-scale software system used by real communities.
 
 
 ## Where can I use this bot?
