@@ -50,7 +50,7 @@ The project follows a modular architecture using professional command groups cal
 
 The modular structure allows new tracking systems and analytics features to be added efficiently without affecting unrelated parts of the application.
 
-Each cog focuses on using the functions from the database file in order to get data directly from the database then using the pillow library it draws the data on a template designed by me with fonts, strokes, restricting rectangles, and specific coordinates.
+Each cog focuses on using the functions from the database file in order to get data directly from the database. Then using the pillow library, it draws the data on a template and adds fonts, strokes, restricting rectangles, and specific coordinates.
 
 
 ---
