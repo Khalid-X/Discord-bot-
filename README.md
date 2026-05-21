@@ -1,100 +1,96 @@
+
 # Statistics Discord Bot Program
 
 ## Overview and Context
 
-**Discord** is a platform where people communicate through text, voice, and video in organized communities called servers. Servers contain channels, roles, and permissions that help communities collaborate and stay organized.
+**Discord** is a communication platform where users interact through text, voice, and video in organized communities called servers. These servers utilize channels, roles, and permissions to help communities collaborate and stay organized.
 
+**Discord bots** are automated applications that interact with Discord servers. They moderate communities, automate tasks, send notifications, and provide engagement analytics or entertainment features.
 
-**Discord bots** are automated applications that interact with Discord servers. They can moderate communities, automate tasks, send notifications, and provide analytics or entertainment features.
+## About the Project
 
-
-## About the project
-
-This repository contains a **Statistics Bot** designed to monitor and analyze activity inside Discord servers. It tracks statistics such as messages, voice activity, invites, mentions, emojis, and more, then converts the collected data into readable **charts**, **leaderboards**, **averages**, and **heatmaps**.
+This repository contains a **Statistics Bot** designed to monitor and analyze activity inside Discord servers. It tracks metrics such as messages, voice activity, invites, mentions, and emojis, then converts that raw data into readable **charts**, **leaderboards**, **averages**, and **heatmaps**.
 
 The system currently supports analytics for over 6,000 users while maintaining efficient database and memory usage.
 
-The project was developed entirely in Python using libraries such as discord.py, Pillow, matplotlib, numpy, and more. The project also requires knowledge of sql and postgres databases,timescaledb,and redis.
+The project was developed entirely in Python using libraries such as `discord.py`, `Pillow`, `matplotlib`, and `numpy`. Building the platform also required a strong working knowledge of `SQL`, `PostgreSQL`, `TimescaleDB`, and `Redis`.
 
 ---
 
+## Infrastructure
 
-## Infrastructure 
+The bot was designed with a strong focus on backend engineering and scalable system architecture. It was built to handle thousands of active users with the structural capacity to scale up to millions.
 
-The bot was designed with a strong focus on backend engineering and scalable system architecture. It was built to be capable of tracking hundreds of thousands of users with the potential of tracking millions. It uses a postgresql database with multiple different extensions. 
+The project required solving real world engineering challenges, including:
 
-The project required solving real-world engineering challenges such as:
-
-- API rate limits
-- Efficient caching
-- Real time event processing
-- Database optimization
-- Scalable analytics storage
-- Large scale data aggregation
-
+* Managing API rate limits
+* Designing efficient caching systems
+* Handling real time event processing
+* Optimizing database queries
+* Scaling analytics storage
+* Implementing large scale data aggregation
 
 ### PostgreSQL Database
 
-Data received from the Discord API is first stored in a **Redis batch system** before being written to the database every 30 seconds. The database currently contains **28 tables** used for tracking or caching.
+For persistent storage and efficient querying, the bot uses a PostgreSQL database coupled with a Redis caching layer.
 
-Most tables in the database are **hourly aggregated** and use **indexes** to improve query performance and efficiency. Timestamp reliant tables are also converted to **hypertables** with the use of the **timescaledb extension** to take advantage of separating data into time chunks that allow for even faster querying. 
+#### Data Flow
 
+Data received from the Discord API is first staged in a **Redis batch system** before being written to the database every 30 seconds. This drastically reduces the write load on the database during high traffic periods. The database currently utilizes **28 tables** dedicated to tracking and caching.
+
+#### Schema Structure
+
+Most tables use **hourly aggregation** and **indexes** to optimize query performance. Timestamp heavy tables are converted into **hypertables** using the **TimescaleDB extension**. This divides data into distinct time chunks, allowing for significantly faster time series queries.
 
 ---
 
-## Software Architecture 
+## Software Architecture
 
-The project follows a modular architecture using professional command groups called cogs. Each cog independently manages its own commands, logic, and systems, making the codebase easier to maintain, debug, and expand.
+The project follows a modular architecture using Discord's native command groups, called **Cogs**. Each Cog independently manages its own commands, logic, and internal systems, making the codebase much easier to maintain, debug, and scale.
 
-The modular structure allows new tracking systems and analytics features to be added efficiently without affecting unrelated parts of the application.
+This modular structure allows new tracking systems and analytics features to be added seamlessly without breaking unrelated parts of the application.
 
-Each cog focuses on using the functions from the database file in order to get data directly from the database. Then using the pillow library, it draws the data on a template and adds fonts, strokes, restricting rectangles, and specific coordinates.
-
+Each Cog pulls data directly by leveraging functions defined in a centralized database module. From there, the bot uses the `Pillow` library to dynamically render this data onto a visual template precisely handling custom fonts, strokes, bounding rectangles, and exact layout coordinates to generate polished images for the user.
 
 ---
 
 ## Deployment & DevOps Architecture
 
-The production environment is hosted on a dedicated cloud infrastructure utilizing a Hetzner VPS (Virtual Private Server) located in Germany.
+The production environment is hosted on dedicated cloud infrastructure utilizing a Hetzner VPS (Virtual Private Server) located in Germany.
 
-### Production Network & System Topology 
+### Production Network & System Topology
 
-- **Process Supervision:** The Discord bot gateway is managed as native Linux `systemd` services. This ensures 24/7 runtime reliability through automated recovery loops, logging, and crash-restarts.
-
-- **Containerized State Layers:** To enforce strict network isolation, the PostgreSQL/TimescaleDB instance and the Redis caching layer run within isolated Docker containers. They are bound exclusively to localhost ports (`5432` and `6379`), making them entirely inaccessible to the public internet.
+* **Process Supervision:** The Discord bot gateway is managed as a native Linux `systemd` service. This ensures 24/7 runtime reliability through automated recovery loops, centralized logging, and instant crash restarts.
+* **Containerized State Layers:** To enforce strict network isolation, the PostgreSQL/TimescaleDB instance and the Redis caching layer run inside isolated Docker containers. They are bound exclusively to localhost ports (`5432` and `6379`), making them completely inaccessible to the public internet.
 
 ### CI/CD Deployment Pipeline
 
-To maintain high development velocity, the project implements a custom CI/CD pipeline using a bash-engineered deployment automation script (`deploy.sh`). 
+To maintain a fast development loop, the project implements a custom deployment automation script (`deploy.sh`).
 
-1. **Secure Transport:** Assets and backend Python modules are pushed to the remote server using encrypted `scp` (Secure Copy Protocol) channels over SSH.
-2. **Automated Lifecycle Management:** The remote execution script handles dependency resolution, updates environmental configurations, and performs rolling restarts of the `systemd` microservices to minimize user-facing downtime.
+1. **Secure Transport:** Code updates and backend Python modules are pushed to the remote server using encrypted `scp` (Secure Copy Protocol) channels over SSH.
+2. **Automated Lifecycle Management:** The remote execution script automatically handles dependency resolution, updates environment variables, and performs rolling restarts of the `systemd` services to minimize user facing downtime.
 
-### Secure Local Development (Hybrid Cloud Environment)
+### Secure Local Development
 
-To ensure local changes never impact the live site, the development environment utilizes an encrypted **SSH Tunnel** to securely pull real-world data from the remote production database to the local machine. This allows for rigorous, sandboxed testing before any code is promoted to production.
-
+To ensure local changes never impact the live site, the development environment utilizes an encrypted **SSH Tunnel** to securely pull real world data from the remote production database to a local machine. This allows for rigorous, sandboxed testing before any code is promoted to production.
 
 ---
 
-
 ## Project Goals and Impact
 
-The primary goal of the project is to help online communities better understand engagement patterns and server growth through data-driven insights.
+The primary goal of this project is to help online communities better understand engagement patterns and server growth through data driven insights.
 
-Beyond analytics, the project also served as a practical software engineering experience involving:
+Beyond the end user features, the project served as a comprehensive software engineering exercise involving:
 
-- Backend infrastructure design
-- Data engineering
-- System optimization
-- Real time application development
-- Scalable architecture planning
-- Product and feature design
+* Backend infrastructure design
+* Data engineering and pipeline optimization
+* Real-time application development
+* Scalable architecture planning
+* Product and feature design
 
-The project demonstrates the ability to independently design, build, optimize, and maintain a production-scale software system used by real communities.
-
+Ultimately, this project demonstrates the ability to independently design, build, optimize, and maintain a production-scale software system used by real communities.
 
 ## Where can I use this bot?
 
-You simply have to make a discord server on the discord application then use this invite link: https://discord.com/oauth2/authorize?client_id=1481328229909270568&permissions=414734863601&integration_type=0&scope=bot+applications.commands 
-
+To try out the bot, simply create a server on the Discord application and invite it using this link:
+[Authorize StatsHQ Bot](https://discord.com/oauth2/authorize?client_id=1481328229909270568&permissions=414734863601&integration_type=0&scope=bot+applications.commands)
