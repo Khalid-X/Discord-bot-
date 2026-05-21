@@ -39,8 +39,6 @@ Data received from the Discord API is first stored in a **Redis batch system** b
 
 Most tables in the database are **hourly aggregated** and use **indexes** to improve query performance and efficiency. Timestamp reliant tables are also converted to **hypertables** with the use of the **timescaledb extension** to take advantage of separating data into time chunks that allow for even faster querying. 
 
-The infrastructure also handles role membership syncing, channel/category syncing, and other maintenance tasks through **cron jobs**. All syncing operations are **rate-limited** to reduce unnecessary database load and IOPS usage.
-
 
 ---
 
@@ -51,6 +49,30 @@ The project follows a modular architecture using professional command groups cal
 The modular structure allows new tracking systems and analytics features to be added efficiently without affecting unrelated parts of the application.
 
 Each cog focuses on using the functions from the database file in order to get data directly from the database. Then using the pillow library, it draws the data on a template and adds fonts, strokes, restricting rectangles, and specific coordinates.
+
+
+---
+
+## Deployment & DevOps Architecture
+
+The production environment is hosted on a dedicated cloud infrastructure utilizing a Hetzner VPS (Virtual Private Server) located in Germany.
+
+### Production Network & System Topology 
+
+- **Process Supervision:** The Discord bot gateway is managed as native Linux `systemd` services. This ensures 24/7 runtime reliability through automated recovery loops, logging, and crash-restarts.
+
+- **Containerized State Layers:** To enforce strict network isolation, the PostgreSQL/TimescaleDB instance and the Redis caching layer run within isolated Docker containers. They are bound exclusively to localhost ports (`5432` and `6379`), making them entirely inaccessible to the public internet.
+
+### CI/CD Deployment Pipeline
+
+To maintain high development velocity, the project implements a custom CI/CD pipeline using a bash-engineered deployment automation script (`deploy.sh`). 
+
+1. **Secure Transport:** Assets and backend Python modules are pushed to the remote server using encrypted `scp` (Secure Copy Protocol) channels over SSH.
+2. **Automated Lifecycle Management:** The remote execution script handles dependency resolution, updates environmental configurations, and performs rolling restarts of the `systemd` microservices to minimize user-facing downtime.
+
+### Secure Local Development (Hybrid Cloud Environment)
+
+To ensure local changes never impact the live site, the development environment utilizes an encrypted **SSH Tunnel** to securely pull real-world data from the remote production database to the local machine. This allows for rigorous, sandboxed testing before any code is promoted to production.
 
 
 ---
