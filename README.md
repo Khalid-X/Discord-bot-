@@ -12,9 +12,9 @@
 
 This repository contains a **Statistics Bot** designed to monitor and analyze activity inside Discord servers. It tracks statistics such as messages, voice activity, invites, mentions, emojis, and more, then converts the collected data into readable **charts**, **leaderboards**, **averages**, and **heatmaps**.
 
-The system currently supports analytics for over 5,000 users while maintaining efficient database and memory usage.
+The system currently supports analytics for over 6,000 users while maintaining efficient database and memory usage.
 
-The project was developed entirely in Python using libraries such as discord.py, Pillow, matplotlib, numpy, and more.
+The project was developed entirely in Python using libraries such as discord.py, Pillow, matplotlib, numpy, and more. The project also requires knowledge of sql and postgres databases,timescaledb,and redis.
 
 ---
 
@@ -33,9 +33,9 @@ The project required solving real-world engineering challenges such as:
 - Large scale data aggregation
 
 
+### PostgreSQL Database
 
-
-Data received from the Discord API is first stored in a **Redis batch system** before being written to the database every 30 seconds. The database currently contains **28 tables** used for tracking and caching.
+Data received from the Discord API is first stored in a **Redis batch system** before being written to the database every 30 seconds. The database currently contains **28 tables** used for tracking or caching.
 
 Most tables in the database are **hourly aggregated** and use **indexes** to improve query performance and efficiency. Timestamp reliant tables are also converted to **hypertables** with the use of the **timescaledb extension** to take advantage of separating data into time chunks that allow for even faster querying. 
 
